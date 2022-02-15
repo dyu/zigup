@@ -23,11 +23,11 @@ cross_compile_target(){
 archive_target(){
     TARGET_DIR=${1%%.*}
     if [ "$TARGET_DIR" != *windows* ]; then
-        [ -e "$TARGET_DIR.tar.gz" ] && rm $TARGET_DIR.tar.gz
-        tar -cvzf $TARGET_DIR.tar.gz $TARGET_DIR
+        [ -e "zigup-$TARGET_DIR.tar.gz" ] && rm zigup-$TARGET_DIR.tar.gz
+        tar -cvzf zigup-$TARGET_DIR.tar.gz $TARGET_DIR
     else
-        [ -e "$TARGET_DIR.zip" ] && rm $TARGET_DIR.zip
-        zip -r $TARGET_DIR.zip $TARGET_DIR
+        [ -e "zigup-$TARGET_DIR.zip" ] && rm zigup-$TARGET_DIR.zip
+        zip -r zigup-$TARGET_DIR.zip $TARGET_DIR
     fi
 }
 
@@ -39,4 +39,35 @@ cd $OUT_DIR
 
 for T in $TARGETS; do
     archive_target $T
+done
+
+REL_VERSION=$1
+[ -n "$REL_VERSION" ] || exit 0
+
+REL_TOKEN=$2
+[ -n "$REL_TOKEN" ] || REL_TOKEN=`cat gh-release-token`
+
+REL_USER=dyu
+
+upload_target(){
+    TARGET_DIR=${1%%.*}
+    FILE_SUFFIX=$TARGET_DIR.zip
+    [ "$TARGET_DIR" != *windows* ] && FILE_SUFFIX=$TARGET_DIR.tar.gz
+    github-release upload \
+        --user $REL_USER \
+        --repo zigup \
+        --tag v$REL_VERSION \
+        --name "zigup-$TARGET_DIR" \
+        --file zigup-$FILE_SUFFIX
+}
+
+github-release release \
+    --user $REL_USER \
+    --repo zigup \
+    --tag v$REL_VERSION \
+    --name "zigup-v$REL_VERSION" \
+    --description "zigup binaries for linux/mac/windows"
+
+for T in $TARGETS; do
+    upload_target $T
 done

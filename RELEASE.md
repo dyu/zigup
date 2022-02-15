@@ -1,7 +1,7 @@
 ## Release the binaries
 
 ```sh
-ZIG_BIN=path/to/zig ./release.sh
+ZIG_BIN=path/to/zig ./release.sh `date '+%Y-%m-%d'`
 ```
 
 ### Binaries
