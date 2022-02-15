@@ -24,7 +24,7 @@ cross_compile_target(){
 archive_target(){
     NAME=${1%%.*}
     TARGET_DIR=zigup-$NAME
-    if [ "$TARGET_DIR" != *windows ]; then
+    if [ "$TARGET_DIR" != *windows* ]; then
         [ -e "$TARGET_DIR.tar.gz" ] && rm $TARGET_DIR.tar.gz
         tar -cvzf $TARGET_DIR.tar.gz $TARGET_DIR
     else
