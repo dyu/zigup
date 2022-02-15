@@ -34,8 +34,7 @@ dist
 ├── zigup-x86_64-macos-gnu.tar.gz
 ├── zigup-x86_64-windows-gnu
 │   └── bin
-│       ├── zigup.exe
-│       └── zigup.pdb
+│       └── zigup.exe
 └── zigup-x86_64-windows-gnu.zip
 
 ```

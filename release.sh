@@ -27,6 +27,7 @@ archive_target(){
     case "$NAME" in
         *-windows-*)
         [ -e "$TARGET_DIR.zip" ] && rm $TARGET_DIR.zip
+        rm $TARGET_DIR/bin/zigup.pdb
         zip -r $TARGET_DIR.zip $TARGET_DIR
         ;;
         
@@ -65,7 +66,7 @@ upload_target(){
         ;;
     esac
     UPLOAD_FILE=$TARGET_DIR$FILE_SUFFIX
-    echo Uploading $UPLOAD_FILE
+    echo "### Uploading $UPLOAD_FILE"
     GITHUB_TOKEN=$REL_TOKEN GITHUB_AUTH_USER=$REL_USER github-release upload \
         --user $REL_USER \
         --repo zigup \
@@ -74,7 +75,7 @@ upload_target(){
         --file $UPLOAD_FILE
 }
 
-echo Tagging v$REL_VERSION
+echo "## Tagging v$REL_VERSION"
 GITHUB_TOKEN=$REL_TOKEN GITHUB_AUTH_USER=$REL_USER github-release release \
     --user $REL_USER \
     --repo zigup \
