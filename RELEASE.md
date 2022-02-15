@@ -8,34 +8,34 @@ ZIG_BIN=path/to/zig ./release.sh `date '+%Y-%m-%d'`
 ```
 
 dist
-├── aarch64-linux-gnu
+├── zigup-aarch64-linux-gnu
 │   └── bin
 │       └── zigup
-├── aarch64-linux-gnu.tar.gz
-├── aarch64-linux-musl
+├── zigup-aarch64-linux-gnu.tar.gz
+├── zigup-aarch64-linux-musl
 │   └── bin
 │       └── zigup
-├── aarch64-linux-musl.tar.gz
-├── aarch64-macos-gnu
+├── zigup-aarch64-linux-musl.tar.gz
+├── zigup-aarch64-macos-gnu
 │   └── bin
 │       └── zigup
-├── aarch64-macos-gnu.tar.gz
-├── x86_64-linux-gnu
+├── zigup-aarch64-macos-gnu.tar.gz
+├── zigup-x86_64-linux-gnu
 │   └── bin
 │       └── zigup
-├── x86_64-linux-gnu.tar.gz
-├── x86_64-linux-musl
+├── zigup-x86_64-linux-gnu.tar.gz
+├── zigup-x86_64-linux-musl
 │   └── bin
 │       └── zigup
-├── x86_64-linux-musl.tar.gz
-├── x86_64-macos-gnu
+├── zigup-x86_64-linux-musl.tar.gz
+├── zigup-x86_64-macos-gnu
 │   └── bin
 │       └── zigup
-├── x86_64-macos-gnu.tar.gz
-├── x86_64-windows-gnu
+├── zigup-x86_64-macos-gnu.tar.gz
+├── zigup-x86_64-windows-gnu
 │   └── bin
 │       ├── zigup.exe
 │       └── zigup.pdb
-└── x86_64-windows-gnu.zip
+└── zigup-x86_64-windows-gnu.tar.gz
 
 ```
