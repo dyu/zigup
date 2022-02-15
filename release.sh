@@ -75,7 +75,7 @@ upload_target(){
         --file $UPLOAD_FILE
 }
 
-echo "## Tagging v$REL_VERSION"
+echo "# Tagging v$REL_VERSION"
 GITHUB_TOKEN=$REL_TOKEN GITHUB_AUTH_USER=$REL_USER github-release release \
     --user $REL_USER \
     --repo zigup \
