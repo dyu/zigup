@@ -56,6 +56,7 @@ upload_target(){
     TARGET_DIR=zigup-$NAME
     FILE_SUFFIX='.zip'
     [ "$TARGET_DIR" != *windows* ] && FILE_SUFFIX='.tar.gz'
+    echo Uploading $TARGET_DIR.$FILE_SUFFIX
     GITHUB_TOKEN=$REL_TOKEN GITHUB_AUTH_USER=$REL_USER github-release upload \
         --user $REL_USER \
         --repo zigup \
@@ -64,6 +65,7 @@ upload_target(){
         --file $TARGET_DIR.$FILE_SUFFIX
 }
 
+echo Tagging v$REL_VERSION
 GITHUB_TOKEN=$REL_TOKEN GITHUB_AUTH_USER=$REL_USER github-release release \
     --user $REL_USER \
     --repo zigup \
@@ -74,3 +76,5 @@ GITHUB_TOKEN=$REL_TOKEN GITHUB_AUTH_USER=$REL_USER github-release release \
 for T in $TARGETS; do
     upload_target $T
 done
+
+echo v$REL_VERSION released!
