@@ -56,7 +56,7 @@ upload_target(){
     TARGET_DIR=zigup-$NAME
     FILE_SUFFIX='.zip'
     [ "$TARGET_DIR" != *windows* ] && FILE_SUFFIX='.tar.gz'
-    github-release upload \
+    GITHUB_TOKEN=$REL_TOKEN github-release upload \
         --user $REL_USER \
         --repo zigup \
         --tag v$REL_VERSION \
@@ -64,7 +64,7 @@ upload_target(){
         --file $TARGET_DIR.$FILE_SUFFIX
 }
 
-github-release release \
+GITHUB_TOKEN=$REL_TOKEN github-release release \
     --user $REL_USER \
     --repo zigup \
     --tag v$REL_VERSION \
